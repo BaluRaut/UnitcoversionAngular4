@@ -1,6 +1,58 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-    <h1>
-    Welcome to {{title}}!
-  </h1>
-</div>
+<div class="container">
+    <h1>Unit Conversion tool</h1>
+    <form [formGroup]="unitConversionForm" #formDir="ngForm">
+        <div class="row">
+            <div class="col-xl-6 col-md-6 col-sm-12">
+                <strong> Enter Value :</strong>
+                <input id="fromUnit" class="form-control" formControlName="fromUnit" required>
+                <div *ngIf="(fromUnit.invalid) 
+                           && 
+                           (fromUnit.dirty || fromUnit.touched)" class="error">
+
+                    <div *ngIf="fromUnit.errors.required">
+                        Number is required.
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-6 col-md-6 col-sm-12">
+                <strong class="resultInfo">  Result : </strong>
+                <span class="form-control info"> {{convertedValue}} </span>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-xl-6 col-md-6 col-sm-12">
+                <strong> Select FromUnit : </strong>
+                <select formControlName="selectFromUnit" id="selectFromUnit" class="form-control" required>
+                   <option *ngFor="let unit of unitMeasure"   
+                            value= {{unit.id}}>{{index}} {{unit.name}}</option>
+               </select>
+                <div *ngIf="selectFromUnit.invalid && (selectFromUnit.dirty || selectFromUnit.touched)" class="alert alert-danger">
+                    <div *ngIf="selectFromUnit.errors.required">
+                        selectFromUnit is required.
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-6 col-md-6 col-sm-12">
+                <strong> Select toUnit : </strong>
+                <select formControlName="selectToUnit" id="selectToUnit" class="form-control" required>
+               <option *ngFor="let unit of unitMeasure"   
+                value= {{unit.id}}>{{index}} {{unit.name}}</option>
+                </select>
+                <div *ngIf="selectToUnit.invalid && (selectToUnit.dirty || selectToUnit.touched)" class="alert alert-danger">
+                    <div *ngIf="selectToUnit.errors.required">
+                        selectFromUnit is required.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+
+        <div class="row">
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary" [disabled]="unitConversionForm.invalid" (click)="convert()"> Submit</button>
+                <button type="button" class="btn btn-default" (click)="formDir.resetForm({})">Reset</button>
+            </div>
+        </div>

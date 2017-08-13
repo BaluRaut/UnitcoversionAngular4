@@ -1,0 +1,15 @@
+.resultInfo {
+    color: limegreen;
+    font-size: 19px;
+}
+
+.error {
+    color: red;
+}
+
+.info {
+    background-color: limegreen;
+    background-color: rgb(37, 236, 39);
+    color: darkred;
+    font-size: 23px;
+}

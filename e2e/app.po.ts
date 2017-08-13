@@ -6,6 +6,6 @@ export class TwodegreePage {
   }
 
   getParagraphText() {
-    return element(by.css('app-root h1')).getText();
+    return element(by.css('app-root .container h1')).getText();
   }
 }
