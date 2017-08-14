@@ -1,7 +1,7 @@
-import { Component, OnInit }                  from '@angular/core';
+import { Component, OnInit }  from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators,ReactiveFormsModule  } from '@angular/forms';
 import { validNumber } from './number-validator';
-import { UnitDataStructure }   from './unit-data-structure';
+import { UnitDataStructure } from './unit-data-structure';
 import { DataService } from './data.service';
 
 @Component({
@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
 constructor(private dataService: DataService) { }
   unitMeasure: UnitDataStructure[] = [];
   convertedValue="";
-  unitFormData = {fromUnit: '123',selectFromUnit:1,selectToUnit:10 };
+  unitFormData = {fromUnit: '',selectFromUnit:'',selectToUnit:'' };
   unitConversionForm: FormGroup;
   ngOnInit(): void {
     this.dataService.getData().then((unitMeasure) => this.unitMeasure = unitMeasure);

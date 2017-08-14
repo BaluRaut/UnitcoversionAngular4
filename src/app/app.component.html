@@ -12,6 +12,10 @@
                     <div *ngIf="fromUnit.errors.required">
                         Number is required.
                     </div>
+
+                    <div *ngIf="fromUnit.errors.validNumber">
+                        Number is invalid. Please enter valid number
+                    </div>
                 </div>
             </div>
 
@@ -43,7 +47,7 @@
                 </select>
                 <div *ngIf="selectToUnit.invalid && (selectToUnit.dirty || selectToUnit.touched)" class="alert alert-danger">
                     <div *ngIf="selectToUnit.errors.required">
-                        selectFromUnit is required.
+                        selectToUnit is required.
                     </div>
                 </div>
             </div>
